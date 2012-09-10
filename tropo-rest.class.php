@@ -45,10 +45,11 @@ class SessionAPI extends RestBase {
 		    }	
 		}
 		
-	  curl_setopt($this->ch, CURLOPT_URL, $this->base . 'sessions?action=create&token=' . $token . $querystring);
+		curl_setopt($this->ch, CURLOPT_URL, $this->base . 'sessions?action=create&token=' . $token . $querystring);
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
-    $result = curl_exec($this->ch);
-    $error = curl_error($this->ch);
+		curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
+		$result = curl_exec($this->ch);
+		$error = curl_error($this->ch);
 		parent::__destruct();
 
 		//check result and parse
